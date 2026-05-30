@@ -6,7 +6,6 @@
     <title>Lucas Rus Gallego | Portfolio Profesional</title>
     <style>
         :root {
-            /* Colores internos del folio */
             --bg-color: #f8fafc;
             --text-color: #0f172a;
             --text-muted: #475569;
@@ -14,6 +13,11 @@
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
             --folio-bg: #ffffff;
+            
+            /* Nuevos colores para la cabecera oscura */
+            --dark-band-bg: #2b2e35;
+            --dark-text: #e2e8f0;
+            --gold-accent: #d4af37; /* Amarillo elegante de la referencia */
         }
 
         * {
@@ -22,91 +26,152 @@
             padding: 0;
         }
 
-        /* FONDO DE LA WEB CON IMAGEN CALMADA */
+        /* FONDO DE LA WEB (Solucionado para archivo local) */
         body {
             font-family: 'Aptos', Calibri, Arial, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
             
-            /* Aquí puedes cambiar el enlace por tu propia foto de laurel si la descargas */
-            background-image: url('https://images.unsplash.com/photo-1464689622512-4147321e149a?auto=format&fit=crop&w=1920&q=80');
+            /* GUARDA TU IMAGEN DE FONDO COMO fondo.jpg EN LA MISMA CARPETA */
+            background-image: url('fondo.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-repeat: no-repeat;
-            
-            /* Sutil oscurecimiento para que el folio destaque más */
-            background-color: #cbd5e1; 
+            background-color: #cbd5e1; /* Color por defecto si la imagen no carga */
             padding: 3rem 1rem;
         }
 
-        /* CONTENEDOR ESTILO "FOLIO" */
+        /* CONTENEDOR ESTILO FOLIO */
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: var(--folio-bg);
-            padding: 4rem 3rem;
+            /* Padding inferior, pero 0 arriba para que el banner toque el borde */
+            padding-bottom: 4rem;
             border-radius: 12px;
-            /* Sombra profunda para dar el efecto de separación del fondo */
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            overflow: hidden; /* Corta las esquinas del banner para mantener la redondez */
         }
 
         @media (max-width: 640px) {
             body { padding: 1rem; }
-            .container { padding: 2rem 1.5rem; }
         }
 
-        header {
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2rem;
+        /* --- NUEVA CABECERA (ESTILO REFERENCIA) --- */
+        .banner-area {
+            position: relative;
+            height: 350px;
+            /* GUARDA LA IMAGEN DE LA IA COMO banner_ia.jpg EN LA MISMA CARPETA */
+            background-image: url('banner_ia.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #1a1a1a; /* Por si falla la imagen */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Texto a la derecha como en la foto */
+            padding: 3rem;
         }
 
-        .header-content-wrapper {
+        .banner-text {
+            text-align: right;
+            color: #ffffff;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
+        }
+
+        .banner-text h1 {
+            font-size: 4rem;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .banner-text h2 {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            letter-spacing: 6px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        /* BANDA OSCURA INFERIOR */
+        .dark-band {
+            background-color: var(--dark-band-bg);
+            color: var(--dark-text);
+            padding: 2.5rem 3rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-            text-align: center;
+            gap: 2rem;
         }
 
-        @media (min-width: 640px) {
-            .header-content-wrapper {
+        @media (min-width: 768px) {
+            .dark-band {
                 flex-direction: row;
-                text-align: left;
-                align-items: flex-start;
-                gap: 2.5rem;
+                align-items: center;
             }
         }
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
+        .dark-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-img-header {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--folio-bg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--gold-accent);
             flex-shrink: 0;
         }
 
-        .header-text h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
+        .welcome-text {
+            color: var(--gold-accent);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .dark-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #475569;
+        }
+
+        @media (min-width: 768px) {
+            .dark-divider {
+                width: 1px;
+                height: 80px;
+            }
+        }
+
+        .dark-right {
+            flex: 2;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .dark-right strong {
+            color: #ffffff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 0;
+        /* --- RESTO DEL CONTENIDO (Con padding lateral ajustado) --- */
+        .content-padding {
+            padding: 0 3rem;
+            margin-top: 4rem;
         }
 
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
+        @media (max-width: 640px) {
+            .dark-band { padding: 2rem 1.5rem; }
+            .content-padding { padding: 0 1.5rem; margin-top: 3rem; }
+            .banner-text h1 { font-size: 2.5rem; }
         }
 
         section {
@@ -121,7 +186,7 @@
             padding-left: 0.75rem;
         }
 
-        /* --- NUEVO: MÉTRICAS DE IMPACTO INFOGRÁFICAS --- */
+        /* MÉTRICAS DE IMPACTO */
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -168,7 +233,7 @@
             color: var(--text-muted);
         }
 
-        /* --- STACK TECNOLÓGICO INFOGRÁFICO --- */
+        /* STACK TECNOLÓGICO */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -188,9 +253,7 @@
             padding-bottom: 0.5rem;
         }
 
-        .skill-item {
-            margin-bottom: 1.2rem;
-        }
+        .skill-item { margin-bottom: 1.2rem; }
 
         .skill-name {
             display: flex;
@@ -214,7 +277,7 @@
             border-radius: 4px;
         }
 
-        /* --- BOTONES Y COMPONENTES --- */
+        /* BOTONES Y TARJETAS */
         .btn-container {
             display: flex;
             gap: 1rem;
@@ -359,181 +422,175 @@
 <body>
 
     <div class="container">
+        
         <header>
-            <div class="header-content-wrapper">
-                <img src="perfil_web.png" alt="Lucas Rus Gallego" class="profile-img">
-                <div class="header-text">
-                    <h1>Lucas Rus Gallego</h1>
-                    <div class="subtitle">Junior Software Engineer Backend</div>
+            <div class="banner-area">
+                <div class="banner-text">
+                    <h1>LUCAS RUS</h1>
+                    <h2>Ingeniería Backend</h2>
+                </div>
+            </div>
+            
+            <div class="dark-band">
+                <div class="dark-left">
+                    <img src="perfil_web.png" alt="Lucas Rus Gallego" class="profile-img-header">
+                    <p class="welcome-text">Hola, soy Lucas.<br>¡Bienvenido a mi portfolio!</p>
+                </div>
+                
+                <div class="dark-divider"></div>
+                
+                <div class="dark-right">
+                    <strong>Madrid | Junior Software Engineer</strong>
+                    <p>Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Busco aportar valor optimizando la tecnología desde sus cimientos de hardware hasta la capa de software, eliminando cuellos de botella mediante técnicas de bajo nivel.</p>
                 </div>
             </div>
         </header>
 
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p class="about-text">
-                <strong>¿Quién soy?</strong><br>
-                Soy Lucas, un Junior Software Engineer especializado en Backend formado en la UPM. Me defino como un desarrollador polifacético, capaz de comprender y optimizar la tecnología desde sus cimientos físicos hasta la capa de software.
-            </p>
-            <p class="about-text">
-                <strong>Mi pasión</strong><br>
-                Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Disfruto trabajando en entornos de altas prestaciones (HPC) y eliminando cuellos de botella mediante técnicas de bajo nivel.
-            </p>
-            <p class="about-text">
-                <strong>El valor que aporto</strong><br>
-                Aporto una visión integral que abarca desde la paralelización de algoritmos y el desarrollo en Ensamblador, hasta el dimensionamiento físico de servidores. Mi enfoque garantiza que el software y la infraestructura funcionen con la máxima eficiencia.
-            </p>
-            <p class="about-text" style="margin-bottom: 0;">
-                <strong>Mi objetivo</strong><br>
-                Busco unirme a un equipo como Junior Software Engineer Backend donde pueda aplicar mi versatilidad y obsesión por el rendimiento. Propongo aportar valor inmediato diseñando soluciones robustas que optimicen los recursos del sistema al milímetro.
-            </p>
-        </section>
-
-        <section id="impacto">
-            <h2>Métricas de Impacto Técnico</h2>
-            <div class="metrics-grid">
-                <div class="metric-box">
-                    <div class="metric-number">-15%</div>
-                    <div class="metric-label">Latencia de Ejecución</div>
-                    <div class="metric-context">Mediante desarrollo de módulos optimizados en C++ y Python.</div>
-                </div>
-                <div class="metric-box">
-                    <div class="metric-number">+20%</div>
-                    <div class="metric-label">Despliegues Seguros</div>
-                    <div class="metric-context">Liderando la transición a arquitecturas basadas en Docker.</div>
-                </div>
-                <div class="metric-box">
-                    <div class="metric-number">12%</div>
-                    <div class="metric-label">Optimización de Rutas</div>
-                    <div class="metric-context">Implementando simuladores algorítmicos basados en Dijkstra/A*.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="habilidades">
-            <h2>Stack Tecnológico</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-group">
-                    <h3>Lenguajes Principales</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>C++</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Python</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Java</span> <span>Intermedio</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>SQL</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h3>Herramientas y Metodologías</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Docker & CI/CD</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Git / Entornos Linux</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Agile (Scrum / Kanban)</span> <span>Avanzado</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Inglés (C1 Cambridge)</span> <span>Fluido</span></div>
-                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="content-padding">
             
-            <div class="btn-container" style="margin-top: 2rem;">
-                <button id="btn-cv" class="btn">Ver CV Tradicional (PDF)</button>
-            </div>
-            <div id="expanded-cv" class="pdf-viewer-container">
-                <iframe src="CV_Lucas_Rus_Gallego.pdf"></iframe>
-            </div>
-        </section>
-
-        <section id="proyectos">
-            <h2>Portfolio de Evidencias</h2>
-            <div class="grid">
-                
-                <div class="card" id="cloud-card">
-                    <div>
-                        <div class="card-title">Optimización de Infraestructura Cloud</div>
-                        <div class="card-description">Presentación ejecutiva enfocada en el uso de agentes autónomos de Inteligencia Artificial para la contención de costes y optimización de latencias en entornos de microservicios.</div>
+            <section id="impacto">
+                <h2>Métricas de Impacto Técnico</h2>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-number">-15%</div>
+                        <div class="metric-label">Latencia de Ejecución</div>
+                        <div class="metric-context">Mediante desarrollo de módulos optimizados en C++ y Python.</div>
                     </div>
+                    <div class="metric-box">
+                        <div class="metric-number">+20%</div>
+                        <div class="metric-label">Despliegues Seguros</div>
+                        <div class="metric-context">Liderando la transición a arquitecturas basadas en Docker.</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-number">12%</div>
+                        <div class="metric-label">Optimización de Rutas</div>
+                        <div class="metric-context">Implementando simuladores algorítmicos basados en Dijkstra/A*.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="habilidades">
+                <h2>Stack Tecnológico</h2>
+                <div class="skills-grid">
                     
-                    <div id="expanded-cloud" class="expanded-section">
-                        <div class="video-wrapper">
-                            <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/preview" allow="autoplay" allowfullscreen></iframe>
+                    <div class="skill-group">
+                        <h3>Lenguajes Principales</h3>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>C++</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
                         </div>
-
-                        <div class="btn-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-                            <button id="btn-diapositivas" class="btn">Ver Diapositivas</button>
-                            <button id="btn-guion" class="btn">Ver Guión</button>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Python</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
                         </div>
-
-                        <div id="viewer-diapositivas" class="pdf-viewer-container">
-                            <iframe src="Presentation_Profesional_Lucas_Rus_Gallego.pdf"></iframe>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Java</span> <span>Intermedio</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
                         </div>
-
-                        <div id="viewer-guion" class="pdf-viewer-container">
-                            <iframe src="Presentacion_Profesional.pdf"></iframe>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>SQL</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
                         </div>
                     </div>
 
-                    <div class="btn-container" style="margin-top: 1.5rem;">
-                        <button id="btn-principal-cloud" class="btn btn-primary">Ver Presentación</button>
+                    <div class="skill-group">
+                        <h3>Herramientas y Metodologías</h3>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Docker & CI/CD</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Git / Entornos Linux</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Agile (Scrum / Kanban)</span> <span>Avanzado</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name"><span>Inglés (C1 Cambridge)</span> <span>Fluido</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                        </div>
                     </div>
+
                 </div>
+                
+                <div class="btn-container" style="margin-top: 2rem;">
+                    <button id="btn-cv" class="btn">Ver CV Tradicional (PDF)</button>
+                </div>
+                <div id="expanded-cv" class="pdf-viewer-container">
+                    <iframe src="CV_Lucas_Rus_Gallego.pdf"></iframe>
+                </div>
+            </section>
 
-                <div class="card" id="blog-card">
-                    <div>
-                        <div class="card-title">Divulgación Tecnológica: IntelliStore</div>
-                        <div class="card-description">Artículo de blog detallado que traduce conceptos complejos de bases de datos a un lenguaje claro, explicando el impacto real de la automatización de la arquitectura.</div>
-                    </div>
+            <section id="proyectos">
+                <h2>Portfolio de Evidencias</h2>
+                <div class="grid">
+                    
+                    <div class="card" id="cloud-card">
+                        <div>
+                            <div class="card-title">Optimización de Infraestructura Cloud</div>
+                            <div class="card-description">Presentación ejecutiva enfocada en el uso de agentes autónomos de Inteligencia Artificial para la contención de costes y optimización de latencias en entornos de microservicios.</div>
+                        </div>
+                        
+                        <div id="expanded-cloud" class="expanded-section">
+                            <div class="video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/preview" allow="autoplay" allowfullscreen></iframe>
+                            </div>
 
-                    <div id="expanded-blog" class="expanded-section">
-                        <div class="pdf-viewer-container active" style="margin-top: 0;">
-                            <iframe src="Blog_Divulgativo.pdf"></iframe>
+                            <div class="btn-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                                <button id="btn-diapositivas" class="btn">Ver Diapositivas</button>
+                                <button id="btn-guion" class="btn">Ver Guión</button>
+                            </div>
+
+                            <div id="viewer-diapositivas" class="pdf-viewer-container">
+                                <iframe src="Presentation_Profesional_Lucas_Rus_Gallego.pdf"></iframe>
+                            </div>
+
+                            <div id="viewer-guion" class="pdf-viewer-container">
+                                <iframe src="Presentacion_Profesional.pdf"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button id="btn-principal-cloud" class="btn btn-primary">Ver Presentación</button>
                         </div>
                     </div>
 
-                    <div class="btn-container" style="margin-top: 1.5rem;">
-                        <button id="btn-principal-blog" class="btn btn-primary">Leer Artículo</button>
+                    <div class="card" id="blog-card">
+                        <div>
+                            <div class="card-title">Divulgación Tecnológica: IntelliStore</div>
+                            <div class="card-description">Artículo de blog detallado que traduce conceptos complejos de bases de datos a un lenguaje claro, explicando el impacto real de la automatización de la arquitectura.</div>
+                        </div>
+
+                        <div id="expanded-blog" class="expanded-section">
+                            <div class="pdf-viewer-container active" style="margin-top: 0;">
+                                <iframe src="Blog_Divulgativo.pdf"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button id="btn-principal-blog" class="btn btn-primary">Leer Artículo</button>
+                        </div>
                     </div>
+
                 </div>
+            </section>
 
-            </div>
-        </section>
+            <section id="contacto">
+                <h2>Contacta conmigo</h2>
+                <div class="btn-container">
+                    <a href="mailto:lucas.rus@email.com" class="btn btn-primary">Enviar Email</a>
+                    <a href="https://linkedin.com/in/lucasrus" target="_blank" class="btn">LinkedIn</a>
+                    <a href="https://github.com/lucasrus" target="_blank" class="btn">GitHub</a>
+                </div>
+            </section>
 
-        <section id="contacto">
-            <h2>Contacta conmigo</h2>
-            <div class="btn-container">
-                <a href="mailto:lucas.rus@email.com" class="btn btn-primary">Enviar Email</a>
-                <a href="https://linkedin.com/in/lucasrus" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/lucasrus" target="_blank" class="btn">GitHub</a>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
-        </footer>
-    </div>
-
-    <script>
-        // Lógica para el CV Tradicional
+            <footer>
+                <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
+            </footer>
+            
+        </div> </div> <script>
         const btnCv = document.getElementById('btn-cv');
         const viewerCv = document.getElementById('expanded-cv');
 
@@ -548,7 +605,6 @@
             }
         });
 
-        // Lógica para la Tarjeta 1 (Cloud)
         const cloudCard = document.getElementById('cloud-card');
         const btnPrincipalCloud = document.getElementById('btn-principal-cloud');
         const expandedCloud = document.getElementById('expanded-cloud');
@@ -561,7 +617,6 @@
 
         btnPrincipalCloud.addEventListener('click', () => {
             cloudCard.classList.toggle('expanded');
-            
             if (cloudCard.classList.contains('expanded')) {
                 expandedCloud.style.display = 'block';
                 btnPrincipalCloud.textContent = 'Cerrar Presentación';
@@ -609,14 +664,12 @@
             }
         });
 
-        // Lógica para la Tarjeta 2 (Blog)
         const blogCard = document.getElementById('blog-card');
         const btnPrincipalBlog = document.getElementById('btn-principal-blog');
         const expandedBlog = document.getElementById('expanded-blog');
 
         btnPrincipalBlog.addEventListener('click', () => {
             blogCard.classList.toggle('expanded');
-            
             if (blogCard.classList.contains('expanded')) {
                 expandedBlog.style.display = 'block';
                 btnPrincipalBlog.textContent = 'Cerrar Artículo';
@@ -628,6 +681,5 @@
             }
         });
     </script>
-
 </body>
 </html>
