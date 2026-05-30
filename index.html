@@ -6,12 +6,14 @@
     <title>Lucas Rus Gallego | Portfolio Profesional</title>
     <style>
         :root {
+            /* Colores internos del folio */
             --bg-color: #f8fafc;
             --text-color: #0f172a;
             --text-muted: #475569;
             --accent-color: #0284c7;
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
+            --folio-bg: #ffffff;
         }
 
         * {
@@ -20,17 +22,38 @@
             padding: 0;
         }
 
+        /* FONDO DE LA WEB CON IMAGEN CALMADA */
         body {
             font-family: 'Aptos', Calibri, Arial, sans-serif;
-            background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            
+            /* Aquí puedes cambiar el enlace por tu propia foto de laurel si la descargas */
+            background-image: url('https://images.unsplash.com/photo-1464689622512-4147321e149a?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            /* Sutil oscurecimiento para que el folio destaque más */
+            background-color: #cbd5e1; 
+            padding: 3rem 1rem;
         }
 
+        /* CONTENEDOR ESTILO "FOLIO" */
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
+            background-color: var(--folio-bg);
+            padding: 4rem 3rem;
+            border-radius: 12px;
+            /* Sombra profunda para dar el efecto de separación del fondo */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .container { padding: 2rem 1.5rem; }
         }
 
         header {
@@ -61,8 +84,8 @@
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--card-bg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 4px solid var(--folio-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
         }
 
@@ -98,79 +121,54 @@
             padding-left: 0.75rem;
         }
 
-        /* --- NUEVO: ESTILOS DE LA LÍNEA DE TIEMPO INFOGRÁFICA --- */
-        .timeline {
-            position: relative;
-            margin-left: 1rem;
-            padding-left: 2rem;
-            border-left: 2px solid var(--border-color);
+        /* --- NUEVO: MÉTRICAS DE IMPACTO INFOGRÁFICAS --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
+        @media (min-width: 640px) {
+            .metrics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
+        .metric-box {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: transform 0.2s ease;
         }
 
-        .timeline-dot {
-            position: absolute;
-            left: -2.45rem;
-            top: 0.3rem;
-            width: 16px;
-            height: 16px;
-            background-color: var(--card-bg);
-            border: 3px solid var(--accent-color);
-            border-radius: 50%;
+        .metric-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
         }
 
-        .timeline-date {
-            font-size: 0.85rem;
-            font-weight: 700;
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 800;
             color: var(--accent-color);
-            margin-bottom: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .timeline-title {
-            font-size: 1.15rem;
+        .metric-label {
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-subtitle {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-        }
-
-        .timeline-content ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .timeline-content li {
-            position: relative;
-            padding-left: 1.2rem;
             margin-bottom: 0.5rem;
+        }
+
+        .metric-context {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
-        .timeline-content li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        /* --- NUEVO: ESTILOS DEL STACK TECNOLÓGICO INFOGRÁFICO --- */
+        /* --- STACK TECNOLÓGICO INFOGRÁFICO --- */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -216,7 +214,7 @@
             border-radius: 4px;
         }
 
-        /* --- ESTILOS DE BOTONES Y TARJETAS --- */
+        /* --- BOTONES Y COMPONENTES --- */
         .btn-container {
             display: flex;
             gap: 1rem;
@@ -228,7 +226,7 @@
             align-items: center;
             justify-content: center;
             padding: 0.75rem 1.5rem;
-            background-color: var(--card-bg);
+            background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: var(--text-color);
@@ -269,7 +267,7 @@
         }
 
         .card {
-            background-color: var(--card-bg);
+            background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 1.5rem;
@@ -281,6 +279,7 @@
         .card.expanded {
             grid-column: 1 / -1; 
             border-color: var(--accent-color);
+            background-color: var(--folio-bg);
         }
 
         .card-title {
@@ -390,50 +389,24 @@
             </p>
         </section>
 
-        <section id="experiencia">
-            <h2>Trayectoria y Formación</h2>
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">Sept 2025 - Presente</div>
-                    <div class="timeline-title">Desarrollador de Software Junior</div>
-                    <div class="timeline-subtitle">Mobility Tech España | Madrid</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Desarrollo de un módulo en C++/Python reduciendo en un 15% el tiempo de ejecución.</li>
-                            <li>Liderazgo en la transición a Docker bajo Scrum, incrementando despliegues seguros un 20%.</li>
-                            <li>Implementación de pruebas unitarias para módulos de alta concurrencia.</li>
-                        </ul>
-                    </div>
+        <section id="impacto">
+            <h2>Métricas de Impacto Técnico</h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-number">-15%</div>
+                    <div class="metric-label">Latencia de Ejecución</div>
+                    <div class="metric-context">Mediante desarrollo de módulos optimizados en C++ y Python.</div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">Ene 2025 - Jun 2025</div>
-                    <div class="timeline-title">Analista Programador</div>
-                    <div class="timeline-subtitle">Universidad Politécnica de Madrid (UPM) | Proyecto Académico</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Desarrollo de un simulador basado en Dijkstra/A*, optimizando rutas un 12%.</li>
-                            <li>Coordinación de un equipo técnico de 4 personas.</li>
-                        </ul>
-                    </div>
+                <div class="metric-box">
+                    <div class="metric-number">+20%</div>
+                    <div class="metric-label">Despliegues Seguros</div>
+                    <div class="metric-context">Liderando la transición a arquitecturas basadas en Docker.</div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2021 - 2025</div>
-                    <div class="timeline-title">Grado en Ingeniería Informática</div>
-                    <div class="timeline-subtitle">Universidad Politécnica de Madrid (UPM)</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li><strong>Nota media:</strong> 8.3/10 (Matrícula de Honor en Estructuras de Datos y Algoritmos).</li>
-                            <li><strong>TFG:</strong> "Optimización algorítmica para sistemas de señalización en tiempo real" (9.5/10).</li>
-                        </ul>
-                    </div>
+                <div class="metric-box">
+                    <div class="metric-number">12%</div>
+                    <div class="metric-label">Optimización de Rutas</div>
+                    <div class="metric-context">Implementando simuladores algorítmicos basados en Dijkstra/A*.</div>
                 </div>
-
             </div>
         </section>
 
