@@ -28,27 +28,31 @@
             padding: 0;
         }
 
-        /* FONDO DE LA WEB (SVG sutil de hojas para asegurar que cargue) */
+        /* FONDO DE LA WEB RESTAURADO A TU IMAGEN */
         body {
             font-family: 'Aptos', Calibri, Arial, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            text-align: left; /* Normalización por defecto */
+            text-align: left; 
             
-            /* Sutil patrón de hojas calmadas directo en CSS */
-            background-color: #d1d5db;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10 20c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z' fill='%3C3943b57' fill-opacity='0.05'/%3E%3Cpath d='M80 80c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z' fill='%3C3943b57' fill-opacity='0.05'/%3E%3Cpath d='M15 70l20 20M85 30L65 10' stroke='%3C3943b57' stroke-width='1' stroke-opacity='0.05'/%3E%3C/svg%3E");
+            /* Fondo cargado desde tu archivo local */
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #cbd5e1; 
             padding: 3rem 1rem;
         }
 
-        /* CONTENEDOR ESTILO FOLIO CON SOMBRA PROFUNDA */
+        /* CONTENEDOR ESTILO FOLIO CON SOMBRA 3D REALISTA */
         .container {
             max-width: 950px;
             margin: 0 auto;
             background-color: var(--folio-bg);
             border-radius: 12px;
-            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
+            /* Sombra doble: una expansiva y otra profunda para separarlo bien del fondo */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), 0 20px 50px rgba(0, 0, 0, 0.5);
             overflow: hidden; 
         }
 
@@ -56,7 +60,7 @@
             body { padding: 1rem; }
         }
 
-        /* --- CABECERA ESTILO ADELINE --- */
+        /* --- CABECERA --- */
         header {
             border-bottom: 1px solid #1a1a1a;
         }
@@ -64,8 +68,8 @@
         .banner-area {
             position: relative;
             height: 350px;
-            /* GUARDA LA IMAGEN GENERADA POR LA IA COMO banner_ia.jpg */
-            background-image: url('banner_ia.jpg');
+            /* BANNER ACTUALIZADO A banner.png */
+            background-image: url('banner.png');
             background-size: cover;
             background-position: center;
             background-color: #1a1a1a; 
@@ -121,7 +125,6 @@
             text-align: left;
         }
 
-        /* PUNTO 3: Foto de perfil más grande (x2 aprox) */
         .profile-img-header {
             width: 130px;
             height: 130px;
@@ -198,7 +201,7 @@
             color: var(--text-muted);
             font-size: 1.05rem;
             margin-bottom: 1.8rem;
-            text-align: left; /* Normalizado */
+            text-align: left; 
         }
 
         .about-text strong {
@@ -207,7 +210,7 @@
             margin-bottom: 0.3rem;
         }
 
-        /* --- PUNTO 1: SOFT SKILLS HORIZONTALES (ESTILO REFERENCIA) --- */
+        /* SOFT SKILLS HORIZONTALES */
         .soft-skills-container {
             display: flex;
             justify-content: space-around;
@@ -251,7 +254,7 @@
             color: var(--text-color);
         }
 
-        /* MÉTRICAS DE IMPACTO (Centrado lógico) */
+        /* MÉTRICAS DE IMPACTO */
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -269,7 +272,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 2rem 1rem;
-            text-align: center; /* Centrado lógico */
+            text-align: center; 
             transition: transform 0.2s ease;
         }
 
@@ -350,7 +353,7 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-top: 1.5rem;
-            justify-content: flex-start; /* Normalizado izq */
+            justify-content: flex-start; 
         }
 
         .btn {
@@ -479,14 +482,14 @@
             border: none;
         }
 
-        /* --- PUNTO 2: PIE DE PÁGINA OSCURO Y UNIFICADO CON CONTACTO --- */
+        /* PIE DE PÁGINA OSCURO */
         .dark-footer {
             background-color: var(--dark-band-bg);
             color: var(--dark-text-muted);
             padding: 4rem 3rem 2rem 3rem;
             margin-top: 0;
             border-top: 1px solid #1a1a1a;
-            text-align: left; /* Normalizado */
+            text-align: left; 
         }
 
         @media (max-width: 640px) {
@@ -511,12 +514,11 @@
             max-width: 600px;
         }
 
-        /* Botones de contacto en el footer con iconos */
         .footer-btn-container {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: flex-start; /* Normalizado izq */
+            justify-content: flex-start; 
         }
 
         .footer-btn {
@@ -531,7 +533,6 @@
             color: var(--gold-accent);
         }
 
-        /* Estilo simple para los iconos Unicode/CSS */
         .icon-placeholder {
             margin-right: 0.7rem;
             font-size: 1.1rem;
@@ -542,7 +543,7 @@
             margin-top: 3rem;
             padding-top: 1.5rem;
             border-top: 1px solid #475569;
-            text-align: center; /* Centrado lógico para copyright */
+            text-align: center; 
             font-size: 0.85rem;
         }
     </style>
@@ -606,8 +607,8 @@
                     </div>
 
                     <div class="skill-circle-item">
-                        <div class="circle-icon">🧩</div>
-                        <span class="skill-circle-label">Resolución de Problemas</span>
+                        <div class="circle-icon">⚡</div>
+                        <span class="skill-circle-label">Alta Motivación y Esfuerzo</span>
                     </div>
 
                     <div class="skill-circle-item">
@@ -696,7 +697,7 @@
                 </div>
                 
                 <div class="btn-container">
-                    <button id="btn-cv" class="btn">Ver CV Tradicional (PDF)</button>
+                    <button id="btn-cv" class="btn btn-primary">Ver CV Tradicional (PDF)</button>
                 </div>
                 <div id="expanded-cv" class="pdf-viewer-container">
                     <iframe src="CV_Lucas_Rus_Gallego.pdf"></iframe>
@@ -791,10 +792,10 @@
             viewerCv.classList.toggle('active');
             if (viewerCv.classList.contains('active')) {
                 btnCv.textContent = 'Ocultar CV Tradicional (PDF)';
-                btnCv.classList.add('btn-primary');
+                btnCv.classList.remove('btn-primary');
             } else {
                 btnCv.textContent = 'Ver CV Tradicional (PDF)';
-                btnCv.classList.remove('btn-primary');
+                btnCv.classList.add('btn-primary');
             }
         });
 
