@@ -6,17 +6,19 @@
     <title>Lucas Rus Gallego | Portfolio Profesional</title>
     <style>
         :root {
-            --bg-color: #f8fafc;
+            /* Colores internos del folio */
             --text-color: #0f172a;
             --text-muted: #475569;
             --accent-color: #0284c7;
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
             --folio-bg: #ffffff;
+            --inner-bg: #f8fafc;
             
-            /* Colores para la cabecera oscura */
+            /* Colores para las bandas oscuras (Header y Footer) */
             --dark-band-bg: #2b2e35;
             --dark-text: #e2e8f0;
+            --dark-text-muted: #cbd5e1;
             --gold-accent: #d4af37; 
         }
 
@@ -26,29 +28,27 @@
             padding: 0;
         }
 
-        /* FONDO DE LA WEB */
+        /* FONDO DE LA WEB (SVG sutil de hojas para asegurar que cargue) */
         body {
             font-family: 'Aptos', Calibri, Arial, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
+            text-align: left; /* Normalización por defecto */
             
-            /* Recuerda guardar tu imagen como fondo.jpg */
-            background-image: url('fondo.jpg');
-            background-size: cover;
-            background-position: center;
+            /* Sutil patrón de hojas calmadas directo en CSS */
+            background-color: #d1d5db;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10 20c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z' fill='%3C3943b57' fill-opacity='0.05'/%3E%3Cpath d='M80 80c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z' fill='%3C3943b57' fill-opacity='0.05'/%3E%3Cpath d='M15 70l20 20M85 30L65 10' stroke='%3C3943b57' stroke-width='1' stroke-opacity='0.05'/%3E%3C/svg%3E");
             background-attachment: fixed;
-            background-color: #cbd5e1; 
             padding: 3rem 1rem;
         }
 
-        /* CONTENEDOR ESTILO FOLIO */
+        /* CONTENEDOR ESTILO FOLIO CON SOMBRA PROFUNDA */
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             background-color: var(--folio-bg);
-            padding-bottom: 4rem;
             border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
             overflow: hidden; 
         }
 
@@ -56,11 +56,15 @@
             body { padding: 1rem; }
         }
 
-        /* --- CABECERA --- */
+        /* --- CABECERA ESTILO ADELINE --- */
+        header {
+            border-bottom: 1px solid #1a1a1a;
+        }
+
         .banner-area {
             position: relative;
             height: 350px;
-            /* Recuerda guardar tu imagen generada por IA como banner_ia.jpg */
+            /* GUARDA LA IMAGEN GENERADA POR LA IA COMO banner_ia.jpg */
             background-image: url('banner_ia.jpg');
             background-size: cover;
             background-position: center;
@@ -93,42 +97,44 @@
             text-transform: uppercase;
         }
 
-        /* BANDA OSCURA INFERIOR */
-        .dark-band {
+        /* BANDA OSCURA DEL HEADER */
+        .dark-header-band {
             background-color: var(--dark-band-bg);
             color: var(--dark-text);
-            padding: 2.5rem 3rem;
+            padding: 3rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         @media (min-width: 768px) {
-            .dark-band {
+            .dark-header-band {
                 flex-direction: row;
                 align-items: center;
             }
         }
 
         .dark-left {
-            flex: 1;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
+            text-align: left;
         }
 
+        /* PUNTO 3: Foto de perfil más grande (x2 aprox) */
         .profile-img-header {
-            width: 90px;
-            height: 90px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--gold-accent);
+            border: 3px solid var(--gold-accent);
             flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .welcome-text {
             color: var(--gold-accent);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 500;
             line-height: 1.3;
         }
@@ -142,62 +148,110 @@
         @media (min-width: 768px) {
             .dark-divider {
                 width: 1px;
-                height: 80px;
+                height: 110px;
+                flex-shrink: 0;
             }
         }
 
         .dark-right {
-            flex: 2;
-            font-size: 0.95rem;
-            color: #cbd5e1;
+            flex-grow: 1;
+            font-size: 1rem;
+            color: var(--dark-text-muted);
+            text-align: left;
         }
 
         .dark-right strong {
             color: #ffffff;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         /* --- CONTENIDO DEL FOLIO --- */
         .content-padding {
-            padding: 0 3rem;
-            margin-top: 4rem;
+            padding: 4rem 3rem;
         }
 
         @media (max-width: 640px) {
-            .dark-band { padding: 2rem 1.5rem; }
-            .content-padding { padding: 0 1.5rem; margin-top: 3rem; }
+            .content-padding { padding: 2.5rem 1.5rem; }
             .banner-text h1 { font-size: 2.5rem; }
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 4.5rem;
         }
 
+        section:last-child { margin-bottom: 0; }
+
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-left: 4px solid var(--accent-color);
-            padding-left: 0.75rem;
+            padding-left: 0.8rem;
+            text-align: left;
         }
 
         .about-text {
             color: var(--text-muted);
             font-size: 1.05rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            text-align: left; /* Normalizado */
         }
 
         .about-text strong {
             color: var(--text-color);
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
-        /* MÉTRICAS DE IMPACTO */
+        /* --- PUNTO 1: SOFT SKILLS HORIZONTALES (ESTILO REFERENCIA) --- */
+        .soft-skills-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .skill-circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 140px;
+            text-align: center;
+        }
+
+        .circle-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--inner-bg);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--accent-color);
+            transition: all 0.2s ease;
+        }
+
+        .skill-circle-item:hover .circle-icon {
+            border-color: var(--accent-color);
+            background-color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .skill-circle-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* MÉTRICAS DE IMPACTO (Centrado lógico) */
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -211,11 +265,11 @@
         }
 
         .metric-box {
-            background-color: var(--bg-color);
+            background-color: var(--inner-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 2rem 1rem;
-            text-align: center;
+            text-align: center; /* Centrado lógico */
             transition: transform 0.2s ease;
         }
 
@@ -242,6 +296,7 @@
         .metric-context {
             font-size: 0.85rem;
             color: var(--text-muted);
+            text-align: center;
         }
 
         /* STACK TECNOLÓGICO */
@@ -262,9 +317,10 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
+            text-align: left;
         }
 
-        .skill-item { margin-bottom: 1.2rem; }
+        .skill-item { margin-bottom: 1.2rem; text-align: left; }
 
         .skill-name {
             display: flex;
@@ -293,6 +349,8 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 1.5rem;
+            justify-content: flex-start; /* Normalizado izq */
         }
 
         .btn {
@@ -300,7 +358,7 @@
             align-items: center;
             justify-content: center;
             padding: 0.75rem 1.5rem;
-            background-color: var(--bg-color);
+            background-color: var(--inner-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: var(--text-color);
@@ -341,13 +399,14 @@
         }
 
         .card {
-            background-color: var(--bg-color);
+            background-color: var(--inner-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
+            text-align: left;
         }
 
         .card.expanded {
@@ -420,12 +479,71 @@
             border: none;
         }
 
-        footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+        /* --- PUNTO 2: PIE DE PÁGINA OSCURO Y UNIFICADO CON CONTACTO --- */
+        .dark-footer {
+            background-color: var(--dark-band-bg);
+            color: var(--dark-text-muted);
+            padding: 4rem 3rem 2rem 3rem;
+            margin-top: 0;
+            border-top: 1px solid #1a1a1a;
+            text-align: left; /* Normalizado */
+        }
+
+        @media (max-width: 640px) {
+            .dark-footer { padding: 3rem 1.5rem 1.5rem 1.5rem; }
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-contact-info h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .footer-contact-info p {
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        /* Botones de contacto en el footer con iconos */
+        .footer-btn-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Normalizado izq */
+        }
+
+        .footer-btn {
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid #475569;
+            color: #ffffff;
+        }
+
+        .footer-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+        }
+
+        /* Estilo simple para los iconos Unicode/CSS */
+        .icon-placeholder {
+            margin-right: 0.7rem;
+            font-size: 1.1rem;
+            color: var(--gold-accent);
+        }
+
+        .footer-bottom-bar {
+            margin-top: 3rem;
             padding-top: 1.5rem;
+            border-top: 1px solid #475569;
+            text-align: center; /* Centrado lógico para copyright */
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -441,7 +559,7 @@
                 </div>
             </div>
             
-            <div class="dark-band">
+            <div class="dark-header-band">
                 <div class="dark-left">
                     <img src="perfil_web.png" alt="Lucas Rus Gallego" class="profile-img-header">
                     <p class="welcome-text">Hola, soy Lucas.<br>¡Bienvenido a mi portfolio!</p>
@@ -450,7 +568,7 @@
                 <div class="dark-divider"></div>
                 
                 <div class="dark-right">
-                    <strong>Madrid | Junior Software Engineer</strong>
+                    <strong>Madrid | Junior Software Engineer Backend</strong>
                     <p>Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Busco aportar valor optimizando la tecnología desde sus cimientos de hardware hasta la capa de software.</p>
                 </div>
             </div>
@@ -476,6 +594,38 @@
                     <strong>Mi objetivo</strong>
                     Busco unirme a un equipo como Junior Software Engineer Backend donde pueda aplicar mi versatilidad y obsesión por el rendimiento. Propongo aportar valor inmediato diseñando soluciones robustas que optimicen los recursos del sistema al milímetro.
                 </p>
+            </section>
+
+            <section id="soft-skills">
+                <h2>Competencias Personales</h2>
+                <div class="soft-skills-container">
+                    
+                    <div class="skill-circle-item">
+                        <div class="circle-icon">🤝</div>
+                        <span class="skill-circle-label">Comunicación y Trabajo en Equipo</span>
+                    </div>
+
+                    <div class="skill-circle-item">
+                        <div class="circle-icon">🧩</div>
+                        <span class="skill-circle-label">Resolución de Problemas</span>
+                    </div>
+
+                    <div class="skill-circle-item">
+                        <div class="circle-icon">🔄</div>
+                        <span class="skill-circle-label">Adaptabilidad</span>
+                    </div>
+
+                    <div class="skill-circle-item">
+                        <div class="circle-icon">🚀</div>
+                        <span class="skill-circle-label">Liderazgo Scrum</span>
+                    </div>
+
+                    <div class="skill-circle-item">
+                        <div class="circle-icon">💡</div>
+                        <span class="skill-circle-label">Pensamiento Crítico</span>
+                    </div>
+
+                </div>
             </section>
 
             <section id="impacto">
@@ -545,7 +695,7 @@
 
                 </div>
                 
-                <div class="btn-container" style="margin-top: 2rem;">
+                <div class="btn-container">
                     <button id="btn-cv" class="btn">Ver CV Tradicional (PDF)</button>
                 </div>
                 <div id="expanded-cv" class="pdf-viewer-container">
@@ -568,7 +718,7 @@
                                 <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/preview" allow="autoplay" allowfullscreen></iframe>
                             </div>
 
-                            <div class="btn-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                            <div class="btn-container">
                                 <button id="btn-diapositivas" class="btn">Ver Diapositivas</button>
                                 <button id="btn-guion" class="btn">Ver Guión</button>
                             </div>
@@ -582,7 +732,7 @@
                             </div>
                         </div>
 
-                        <div class="btn-container" style="margin-top: 1.5rem;">
+                        <div class="btn-container">
                             <button id="btn-principal-cloud" class="btn btn-primary">Ver Presentación</button>
                         </div>
                     </div>
@@ -599,28 +749,41 @@
                             </div>
                         </div>
 
-                        <div class="btn-container" style="margin-top: 1.5rem;">
+                        <div class="btn-container">
                             <button id="btn-principal-blog" class="btn btn-primary">Leer Artículo</button>
                         </div>
                     </div>
 
                 </div>
             </section>
-
-            <section id="contacto">
-                <h2>Contacta conmigo</h2>
-                <div class="btn-container">
-                    <a href="mailto:lucas.rus@email.com" class="btn btn-primary">Enviar Email</a>
-                    <a href="https://linkedin.com/in/lucasrus" target="_blank" class="btn">LinkedIn</a>
-                    <a href="https://github.com/lucasrus" target="_blank" class="btn">GitHub</a>
-                </div>
-            </section>
-
-            <footer>
-                <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
-            </footer>
             
-        </div> </div> <script>
+        </div> <footer class="dark-footer">
+            <div class="footer-content">
+                
+                <div class="footer-contact-info">
+                    <h3>Contacta conmigo</h3>
+                    <p>¿Tienes un proyecto interesante o una oferta que encaje con mi perfil? No dudes en contactarme a través de cualquiera de estos canales. Respondo lo antes posible.</p>
+                    
+                    <div class="footer-btn-container">
+                        <a href="mailto:lcsrusg@gmail.com" class="btn footer-btn">
+                            <span class="icon-placeholder">✉</span> lcsrusg@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucas-rus-gallego/" target="_blank" class="btn footer-btn">
+                            <span class="icon-placeholder">🔗</span> LinkedIn
+                        </a>
+                        <a href="https://github.com/LcsRusG" target="_blank" class="btn footer-btn">
+                            <span class="icon-placeholder">💻</span> GitHub/LcsRusG
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-bottom-bar">
+                    <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
+                </div>
+            </div>
+        </footer>
+
+    </div> <script>
         const btnCv = document.getElementById('btn-cv');
         const viewerCv = document.getElementById('expanded-cv');
 
