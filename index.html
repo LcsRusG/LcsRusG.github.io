@@ -39,7 +39,35 @@
             padding-bottom: 2rem;
         }
 
-        h1 {
+        /* --- ESTILOS NUEVOS DE LA CABECERA CON FOTO --- */
+        .header-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .header-content-wrapper {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                gap: 2.5rem;
+            }
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.05em;
@@ -131,11 +159,6 @@
             transition: all 0.3s ease;
         }
 
-        .card:hover:not(.expanded) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
         .card.expanded {
             grid-column: 1 / -1; 
             border-color: var(--accent-color);
@@ -153,13 +176,11 @@
             margin-bottom: 1.5rem;
         }
 
-        .expanded-content {
+        /* --- ESTILOS DE LA ZONA EXPANDIDA --- */
+        .expanded-section {
             display: none;
             width: 100%;
-        }
-
-        .card.expanded .expanded-content {
-            display: block;
+            margin-top: 1rem;
             animation: fadeIn 0.4s ease forwards;
         }
 
@@ -168,18 +189,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .video-container {
+        .video-wrapper {
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
-            margin-bottom: 1.5rem;
             border-radius: 6px;
             border: 1px solid var(--border-color);
             background-color: #000;
         }
 
-        .video-container iframe {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -188,23 +208,21 @@
             border: 0;
         }
 
-        /* Estilos para los visores de PDF integrados */
-        .document-viewer {
+        .pdf-viewer-container {
             display: none;
             width: 100%;
-            height: 550px;
+            height: 600px;
             margin-top: 1.5rem;
             border-radius: 6px;
             border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
-        .document-viewer.open {
+        .pdf-viewer-container.active {
             display: block;
-            animation: fadeIn 0.4s ease;
         }
 
-        .document-viewer iframe {
+        .pdf-viewer-container iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -224,11 +242,16 @@
 
     <div class="container">
         <header>
-            <h1>Lucas Rus Gallego</h1>
-            <div class="subtitle">Junior Software Engineer Backend</div>
-            <p class="about-text">
-                Soy Junior Software Engineer por la UPM con una auténtica obsesión por el rendimiento. Mi objetivo va más allá de escribir código funcional: busco comprender y optimizar la tecnología desde sus cimientos (hardware, red y memoria). Me especializo en entornos de altas prestaciones (HPC) y en construir sistemas eficientes que exprimen al máximo cada recurso.
-            </p>
+            <div class="header-content-wrapper">
+                <img src="perfil_web.png" alt="Lucas Rus Gallego" class="profile-img">
+                <div class="header-text">
+                    <h1>Lucas Rus Gallego</h1>
+                    <div class="subtitle">Junior Software Engineer Backend</div>
+                    <p class="about-text">
+                        Soy Junior Software Engineer por la UPM con una auténtica obsesión por el rendimiento. Mi objetivo va más allá de escribir código funcional: busco comprender y optimizar la tecnología desde sus cimientos (hardware, red y memoria). Me especializo en entornos de altas prestaciones (HPC) y en construir sistemas eficientes que exprimen al máximo cada recurso.
+                    </p>
+                </div>
+            </div>
         </header>
 
         <section id="trayectoria">
@@ -249,37 +272,44 @@
                         <div class="card-description">Presentación ejecutiva enfocada en el uso de agentes autónomos de Inteligencia Artificial para la contención de costes y optimización de latencias en entornos de microservicios.</div>
                     </div>
                     
-                    <div class="expanded-content">
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/view?usp=sharing" allow="autoplay" allowfullscreen></iframe>
+                    <div id="expanded-cloud" class="expanded-section">
+                        <div class="video-wrapper">
+                            <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/preview" allow="autoplay" allowfullscreen></iframe>
                         </div>
 
-                        <div class="btn-container" style="justify-content: flex-start; margin-bottom: 0.5rem;">
-                            <button class="btn" id="trigger-slides" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Ver Diapositivas</button>
-                            <button class="btn" id="trigger-script" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Ver Guión</button>
+                        <div class="btn-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                            <button id="btn-diapositivas" class="btn">Ver Diapositivas</button>
+                            <button id="btn-guion" class="btn">Ver Guión</button>
                         </div>
 
-                        <div class="document-viewer" id="slides-viewer">
+                        <div id="viewer-diapositivas" class="pdf-viewer-container">
                             <iframe src="Presentation_Profesional_Lucas_Rus_Gallego.pdf"></iframe>
                         </div>
 
-                        <div class="document-viewer" id="script-viewer">
+                        <div id="viewer-guion" class="pdf-viewer-container">
                             <iframe src="Presentacion_Profesional.pdf"></iframe>
                         </div>
                     </div>
 
                     <div class="btn-container" style="margin-top: 1.5rem;">
-                        <button class="btn btn-primary" id="trigger-expand">Ver Presentación</button>
+                        <button id="btn-principal-cloud" class="btn btn-primary">Ver Presentación</button>
                     </div>
                 </div>
 
-                <div class="card" id="blog-card" style="justify-content: space-between;">
+                <div class="card" id="blog-card">
                     <div>
                         <div class="card-title">Divulgación Tecnológica: IntelliStore</div>
                         <div class="card-description">Artículo de blog detallado que traduce conceptos complejos de bases de datos a un lenguaje claro, explicando el impacto real de la automatización de la arquitectura.</div>
                     </div>
+
+                    <div id="expanded-blog" class="expanded-section">
+                        <div class="pdf-viewer-container active" style="margin-top: 0;">
+                            <iframe src="Blog_Divulgativo.pdf"></iframe>
+                        </div>
+                    </div>
+
                     <div class="btn-container" style="margin-top: 1.5rem;">
-                        <a href="Blog_Divulgativo.pdf" target="_blank" class="btn">Leer Artículo</a>
+                        <button id="btn-principal-blog" class="btn btn-primary">Leer Artículo</button>
                     </div>
                 </div>
 
@@ -292,70 +322,83 @@
     </div>
 
     <script>
+        // --- Lógica para la Tarjeta 1 (Cloud) ---
         const cloudCard = document.getElementById('cloud-card');
-        const btnExpand = document.getElementById('trigger-expand');
-        
-        // Botones y contenedores de los documentos
-        const btnSlides = document.getElementById('trigger-slides');
-        const slidesViewer = document.getElementById('slides-viewer');
-        const btnScript = document.getElementById('trigger-script');
-        const scriptViewer = document.getElementById('script-viewer');
+        const btnPrincipalCloud = document.getElementById('btn-principal-cloud');
+        const expandedCloud = document.getElementById('expanded-cloud');
 
-        // Función 1: Expandir o contraer toda la tarjeta
-        btnExpand.addEventListener('click', () => {
+        const btnDiapo = document.getElementById('btn-diapositivas');
+        const viewerDiapo = document.getElementById('viewer-diapositivas');
+        
+        const btnGuion = document.getElementById('btn-guion');
+        const viewerGuion = document.getElementById('viewer-guion');
+
+        btnPrincipalCloud.addEventListener('click', () => {
             cloudCard.classList.toggle('expanded');
             
             if (cloudCard.classList.contains('expanded')) {
-                btnExpand.textContent = 'Cerrar Presentación';
-                btnExpand.classList.remove('btn-primary');
+                expandedCloud.style.display = 'block';
+                btnPrincipalCloud.textContent = 'Cerrar Presentación';
+                btnPrincipalCloud.classList.remove('btn-primary');
             } else {
-                btnExpand.textContent = 'Ver Presentación';
-                btnExpand.classList.add('btn-primary');
+                expandedCloud.style.display = 'none';
+                btnPrincipalCloud.textContent = 'Ver Presentación';
+                btnPrincipalCloud.classList.add('btn-primary');
                 
-                // Al cerrar la tarjeta, cerramos y reiniciamos los botones de los documentos
-                slidesViewer.classList.remove('open');
-                btnSlides.textContent = 'Ver Diapositivas';
-                btnSlides.classList.remove('btn-primary');
+                viewerDiapo.classList.remove('active');
+                btnDiapo.textContent = 'Ver Diapositivas';
+                btnDiapo.classList.remove('btn-primary');
                 
-                scriptViewer.classList.remove('open');
-                btnScript.textContent = 'Ver Guión';
-                btnScript.classList.remove('btn-primary');
+                viewerGuion.classList.remove('active');
+                btnGuion.textContent = 'Ver Guión';
+                btnGuion.classList.remove('btn-primary');
             }
         });
 
-        // Función 2: Abrir/Cerrar Diapositivas
-        btnSlides.addEventListener('click', () => {
-            slidesViewer.classList.toggle('open');
-            
-            if (slidesViewer.classList.contains('open')) {
-                btnSlides.textContent = 'Ocultar Diapositivas';
-                btnSlides.classList.add('btn-primary');
-                
-                // Opcional: Cierra el guión para no saturar la pantalla
-                scriptViewer.classList.remove('open');
-                btnScript.textContent = 'Ver Guión';
-                btnScript.classList.remove('btn-primary');
+        btnDiapo.addEventListener('click', () => {
+            viewerDiapo.classList.toggle('active');
+            if (viewerDiapo.classList.contains('active')) {
+                btnDiapo.textContent = 'Ocultar Diapositivas';
+                btnDiapo.classList.add('btn-primary');
+                viewerGuion.classList.remove('active');
+                btnGuion.textContent = 'Ver Guión';
+                btnGuion.classList.remove('btn-primary');
             } else {
-                btnSlides.textContent = 'Ver Diapositivas';
-                btnSlides.classList.remove('btn-primary');
+                btnDiapo.textContent = 'Ver Diapositivas';
+                btnDiapo.classList.remove('btn-primary');
             }
         });
 
-        // Función 3: Abrir/Cerrar Guión
-        btnScript.addEventListener('click', () => {
-            scriptViewer.classList.toggle('open');
-            
-            if (scriptViewer.classList.contains('open')) {
-                btnScript.textContent = 'Ocultar Guión';
-                btnScript.classList.add('btn-primary');
-                
-                // Opcional: Cierra las diapositivas para no saturar la pantalla
-                slidesViewer.classList.remove('open');
-                btnSlides.textContent = 'Ver Diapositivas';
-                btnSlides.classList.remove('btn-primary');
+        btnGuion.addEventListener('click', () => {
+            viewerGuion.classList.toggle('active');
+            if (viewerGuion.classList.contains('active')) {
+                btnGuion.textContent = 'Ocultar Guión';
+                btnGuion.classList.add('btn-primary');
+                viewerDiapo.classList.remove('active');
+                btnDiapo.textContent = 'Ver Diapositivas';
+                btnDiapo.classList.remove('btn-primary');
             } else {
-                btnScript.textContent = 'Ver Guión';
-                btnScript.classList.remove('btn-primary');
+                btnGuion.textContent = 'Ver Guión';
+                btnGuion.classList.remove('btn-primary');
+            }
+        });
+
+        // --- Lógica para la Tarjeta 2 (Blog) ---
+        const blogCard = document.getElementById('blog-card');
+        const btnPrincipalBlog = document.getElementById('btn-principal-blog');
+        const expandedBlog = document.getElementById('expanded-blog');
+
+        btnPrincipalBlog.addEventListener('click', () => {
+            blogCard.classList.toggle('expanded');
+            
+            if (blogCard.classList.contains('expanded')) {
+                expandedBlog.style.display = 'block';
+                btnPrincipalBlog.textContent = 'Cerrar Artículo';
+                btnPrincipalBlog.classList.remove('btn-primary');
+            } else {
+                expandedBlog.style.display = 'none';
+                btnPrincipalBlog.textContent = 'Leer Artículo';
+                btnPrincipalBlog.classList.add('btn-primary');
             }
         });
     </script>
