@@ -87,7 +87,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
@@ -114,7 +114,6 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            transition: all 0.4s ease;
         }
 
         @media (min-width: 640px) {
@@ -131,9 +130,7 @@
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .card:hover:not(.expanded) {
@@ -159,23 +156,31 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Contenedores ocultos inicialmente */
-        .video-container {
+        /* Contenedor que se muestra solo al expandir */
+        .expanded-content {
             display: none;
+            width: 100%;
+        }
+
+        .card.expanded .expanded-content {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-container {
             position: relative;
             padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
             height: 0;
             overflow: hidden;
-            margin: 1.5rem 0;
+            margin-bottom: 1.5rem;
             border-radius: 6px;
             border: 1px solid var(--border-color);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card.expanded .video-container {
-            display: block;
-            opacity: 1;
+            background-color: #000;
         }
 
         .video-container iframe {
@@ -187,34 +192,28 @@
             border: 0;
         }
 
+        /* Contenedor del guión */
         .script-container {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s ease;
+            transition: max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease;
             background-color: var(--bg-color);
             border-radius: 6px;
             padding: 0;
+            margin-top: 0;
         }
 
         .script-container.open {
-            max-height: 1000px; /* Permite que se despliegue suavemente */
-            margin-top: 1rem;
+            max-height: 1200px;
             padding: 1.2rem;
+            margin-top: 1.5rem;
             border: 1px dashed var(--border-color);
-            overflow-y: auto;
-        }
-
-        .script-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
         }
 
         .script-content {
             font-size: 0.9rem;
             color: var(--text-muted);
-            white-space: pre-line; /* Mantiene los saltos de línea */
+            white-space: pre-line;
         }
 
         footer {
@@ -256,32 +255,35 @@
                         <div class="card-description">Presentación ejecutiva enfocada en el uso de agentes autónomos de Inteligencia Artificial para la contención de costes y optimización de latencias en entornos de microservicios.</div>
                     </div>
                     
-                    <div class="video-container">
-                        <iframe src="https://drive.google.com/file/d/e/XYZ_TU_ID_DE_VIDEO/preview" allow="autoplay"></iframe>
-                    </div>
+                    <div class="expanded-content">
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/TU_ID_AQUI/preview" allow="autoplay" allowfullscreen></iframe>
+                        </div>
 
-                    <div class="script-container" id="script-accordion">
-                        <div class="script-title">Guión y Estructura de la Defensa:</div>
-                        <div class="script-content">
-                            Introducción: Presentación del problema de sobre-aprovisionamiento...
-                            Bloque 1: Análisis técnico del framework IntelliStore...
-                            Bloque 2: Resultados empíricos del paper (28% velocidad, 34% ahorro)...
-                            Conclusión: Turno de preguntas y cierre reflexivo.
+                        <div class="btn-container">
+                            <button class="btn" id="trigger-script" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Ver Guión</button>
+                        </div>
+
+                        <div class="script-container" id="script-accordion">
+                            <div class="script-content">
+                                [Pega aquí el texto completo de tu guión y se respetarán los saltos de línea]
+                            </div>
                         </div>
                     </div>
 
-                    <div class="btn-container" style="margin-top: 1rem; gap: 0.5rem;">
+                    <div class="btn-container" style="margin-top: 1.5rem;">
                         <button class="btn btn-primary" id="trigger-expand">Ver Presentación</button>
-                        <button class="btn" id="trigger-script" style="display: none;">Ver Guión</button>
                     </div>
                 </div>
 
-                <div class="card" id="blog-card">
+                <div class="card" id="blog-card" style="justify-content: space-between;">
                     <div>
                         <div class="card-title">Divulgación Tecnológica: IntelliStore</div>
                         <div class="card-description">Artículo de blog detallado que traduce conceptos complejos de bases de datos a un lenguaje claro, explicando el impacto real de la automatización de la arquitectura.</div>
                     </div>
-                    <a href="Blog_Divulgativo.pdf" target="_blank" class="btn" style="align-self: flex-start;">Leer Artículo</a>
+                    <div class="btn-container" style="margin-top: 1.5rem;">
+                        <a href="Blog_Divulgativo.pdf" target="_blank" class="btn">Leer Artículo</a>
+                    </div>
                 </div>
 
             </div>
@@ -295,26 +297,28 @@
     <script>
         const cloudCard = document.getElementById('cloud-card');
         const btnExpand = document.getElementById('trigger-expand');
+        
         const btnScript = document.getElementById('trigger-script');
         const scriptAccordion = document.getElementById('script-accordion');
 
+        // Botón principal: Expandir tarjeta
         btnExpand.addEventListener('click', () => {
-            // Alternar estado expandido de la tarjeta principal
             cloudCard.classList.toggle('expanded');
             
             if (cloudCard.classList.contains('expanded')) {
                 btnExpand.textContent = 'Cerrar Presentación';
-                btnScript.style.display = 'inline-flex'; // Mostrar botón de guión
+                btnExpand.classList.remove('btn-primary');
             } else {
                 btnExpand.textContent = 'Ver Presentación';
-                btnScript.style.display = 'none'; // Ocultar botón de guión
-                scriptAccordion.classList.remove('open'); // Cerrar guión por seguridad
+                btnExpand.classList.add('btn-primary');
+                // Cerrar el guión al cerrar la presentación para que quede limpio la próxima vez
+                scriptAccordion.classList.remove('open');
                 btnScript.textContent = 'Ver Guión';
             }
         });
 
+        // Botón secundario: Desplegar Guión
         btnScript.addEventListener('click', () => {
-            // Alternar la clase del acordeón del guión
             scriptAccordion.classList.toggle('open');
             if (scriptAccordion.classList.contains('open')) {
                 btnScript.textContent = 'Ocultar Guión';
