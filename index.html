@@ -15,7 +15,7 @@
             --folio-bg: #ffffff;
             --inner-bg: #f8fafc;
             
-            /* Colores para las bandas oscuras */
+            /* Colores para las bandas oscuras (Header y Footer) */
             --dark-band-bg: #2b2e35;
             --dark-text: #e2e8f0;
             --dark-text-muted: #cbd5e1;
@@ -38,7 +38,7 @@
         /* Desplazamiento suave para la barra de navegación */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Evita que la navbar tape los títulos */
+            scroll-padding-top: 80px; 
         }
 
         /* FONDO DE LA WEB RESTAURADO A TU IMAGEN */
@@ -65,7 +65,6 @@
             background-color: var(--folio-bg);
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), 0 20px 50px rgba(0, 0, 0, 0.5);
-            /* overflow: hidden; <- Eliminado para que funcione el sticky de la navbar */
         }
 
         @media (max-width: 640px) {
@@ -80,7 +79,6 @@
         .banner-area {
             position: relative;
             height: 350px;
-            /* Degradado oscuro a la derecha para legibilidad, luego la imagen */
             background-image: linear-gradient(to right, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%), url('banner.png');
             background-size: cover;
             background-position: center;
@@ -89,7 +87,6 @@
             align-items: center;
             justify-content: flex-end; 
             padding: 3rem;
-            /* Mantener bordes redondeados arriba */
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
         }
@@ -189,7 +186,7 @@
             margin-bottom: 0.6rem;
         }
 
-        /* --- NUEVO: BARRA DE NAVEGACIÓN STICKY --- */
+        /* BARRA DE NAVEGACIÓN STICKY */
         .navbar {
             position: sticky;
             top: 0;
@@ -552,7 +549,6 @@
             margin-top: 0;
             border-top: 1px solid #1a1a1a;
             text-align: left; 
-            /* Mantener bordes redondeados abajo */
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
         }
@@ -635,7 +631,7 @@
                 
                 <div class="dark-right">
                     <strong>Madrid | Junior Software Engineer Backend</strong>
-                    <p>Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Busco aportar valor optimizando la tecnología desde sus cimientos de hardware hasta la capa de software.</p>
+                    <p>Me encantan los retos técnicos y mejorar el rendimiento del código. Busco aportar valor construyendo sistemas rápidos y estables, entendiendo la tecnología desde el hardware hasta el software.</p>
                 </div>
             </div>
         </header>
@@ -645,6 +641,7 @@
             <a href="#soft-skills">Competencias</a>
             <a href="#impacto">Impacto</a>
             <a href="#habilidades">Skills</a>
+            <a href="#enfoque">Enfoque</a>
             <a href="#cv-linkedin">CV & Redes</a>
             <a href="#proyectos">Portfolio</a>
         </nav>
@@ -655,19 +652,19 @@
                 <h2>Sobre mí</h2>
                 <p class="about-text">
                     <strong>¿Quién soy?</strong>
-                    Soy Lucas, un Junior Software Engineer especializado en Backend formado en la UPM. Me defino como un desarrollador polifacético, capaz de comprender y optimizar la tecnología desde sus cimientos físicos hasta la capa de software.
+                    Soy Lucas, Junior Software Engineer especializado en Backend y formado en la UPM. Me gusta entender cómo funciona la tecnología desde la base del hardware hasta la capa de software para poder construir mejores soluciones.
                 </p>
                 <p class="about-text">
                     <strong>Mi pasión</strong>
-                    Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Disfruto trabajando en entornos de altas prestaciones (HPC) y eliminando cuellos de botella mediante técnicas de bajo nivel.
+                    Me encantan los retos técnicos y mejorar el rendimiento del código. Disfruto mucho trabajando en entornos de altas prestaciones (HPC) y buscando formas de eliminar cuellos de botella usando técnicas de bajo nivel.
                 </p>
                 <p class="about-text">
                     <strong>El valor que aporto</strong>
-                    Aporto una visión integral que abarca desde la paralelización de algoritmos y el desarrollo en Ensamblador, hasta el dimensionamiento físico de servidores. Mi enfoque garantiza que el software y la infraestructura funcionen con la máxima eficiencia.
+                    Tengo experiencia práctica desde la paralelización de algoritmos hasta el despliegue en servidores. Me interesa construir sistemas rápidos, estables y fáciles de mantener, asegurando que el software y la infraestructura trabajen bien juntos.
                 </p>
                 <p class="about-text" style="margin-bottom: 0;">
                     <strong>Mi objetivo</strong>
-                    Busco unirme a un equipo como Junior Software Engineer Backend donde pueda aplicar mi versatilidad y obsesión por el rendimiento. Propongo aportar valor inmediato diseñando soluciones robustas que optimicen los recursos del sistema al milímetro.
+                    Busco unirme a un equipo como Junior Software Engineer Backend donde pueda seguir creciendo técnicamente. Quiero aportar valor desarrollando soluciones robustas y cuidando el uso de los recursos del sistema.
                 </p>
             </section>
 
@@ -729,17 +726,17 @@
                     <div class="metric-box">
                         <div class="metric-number">-15%</div>
                         <div class="metric-label">Latencia de Ejecución</div>
-                        <div class="metric-context">Mediante desarrollo de módulos optimizados en C++ y Python.</div>
+                        <div class="metric-context">Logrado en Mobility Tech España mediante el desarrollo de nuevos módulos en C++ y Python.</div>
                     </div>
                     <div class="metric-box">
                         <div class="metric-number">+20%</div>
                         <div class="metric-label">Despliegues Seguros</div>
-                        <div class="metric-context">Liderando la transición a arquitecturas basadas en Docker.</div>
+                        <div class="metric-context">Conseguido en Mobility Tech España al liderar la transición a Docker bajo metodología Scrum.</div>
                     </div>
                     <div class="metric-box">
                         <div class="metric-number">12%</div>
                         <div class="metric-label">Optimización de Rutas</div>
-                        <div class="metric-context">Implementando simuladores algorítmicos basados en Dijkstra/A*.</div>
+                        <div class="metric-context">Proyecto universitario (UPM) de simulación logística implementando los algoritmos Dijkstra y A*.</div>
                     </div>
                 </div>
             </section>
@@ -791,8 +788,18 @@
                 </div>
             </section>
 
+            <section id="enfoque">
+                <h2>Mi enfoque profesional</h2>
+                <p class="about-text">
+                    Todas las evidencias de este portfolio reflejan mi interés por la optimización de sistemas, el desarrollo backend y la ingeniería de alto rendimiento.
+                </p>
+                <p class="about-text" style="margin-bottom: 0;">
+                    Tanto mi CV tradicional como la presentación profesional y el artículo divulgativo muestran distintas facetas de un mismo perfil técnico: análisis, comunicación y capacidad para diseñar soluciones eficientes.
+                </p>
+            </section>
+
             <section id="cv-linkedin">
-                <h2>Curriculum y Presencia Digital</h2>
+                <h2>Currículum y Presencia Digital</h2>
                 <div class="grid">
                     
                     <div class="card">
