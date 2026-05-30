@@ -39,7 +39,6 @@
             padding-bottom: 2rem;
         }
 
-        /* --- ESTILOS NUEVOS DE LA CABECERA CON FOTO --- */
         .header-content-wrapper {
             display: flex;
             flex-direction: column;
@@ -176,7 +175,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- ESTILOS DE LA ZONA EXPANDIDA --- */
         .expanded-section {
             display: none;
             width: 100%;
@@ -220,6 +218,7 @@
 
         .pdf-viewer-container.active {
             display: block;
+            animation: fadeIn 0.4s ease forwards;
         }
 
         .pdf-viewer-container iframe {
@@ -257,8 +256,12 @@
         <section id="trayectoria">
             <h2>Trayectoria Profesional</h2>
             <div class="btn-container">
-                <a href="CV_Lucas_Rus_Gallego.pdf" target="_blank" class="btn btn-primary">Descargar CV Tradicional (PDF)</a>
+                <button id="btn-cv" class="btn btn-primary">Ver CV Tradicional</button>
                 <a href="https://linkedin.com" target="_blank" class="btn">Perfil de LinkedIn</a>
+            </div>
+
+            <div id="expanded-cv" class="pdf-viewer-container">
+                <iframe src="CV_Lucas_Rus_Gallego.pdf"></iframe>
             </div>
         </section>
 
@@ -322,6 +325,21 @@
     </div>
 
     <script>
+        // --- Lógica para el CV Tradicional ---
+        const btnCv = document.getElementById('btn-cv');
+        const viewerCv = document.getElementById('expanded-cv');
+
+        btnCv.addEventListener('click', () => {
+            viewerCv.classList.toggle('active');
+            if (viewerCv.classList.contains('active')) {
+                btnCv.textContent = 'Ocultar CV Tradicional';
+                btnCv.classList.remove('btn-primary');
+            } else {
+                btnCv.textContent = 'Ver CV Tradicional';
+                btnCv.classList.add('btn-primary');
+            }
+        });
+
         // --- Lógica para la Tarjeta 1 (Cloud) ---
         const cloudCard = document.getElementById('cloud-card');
         const btnPrincipalCloud = document.getElementById('btn-principal-cloud');
