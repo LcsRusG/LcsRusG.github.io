@@ -77,12 +77,13 @@
             font-size: 1.25rem;
             color: var(--accent-color);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
 
         .about-text {
             color: var(--text-muted);
             font-size: 1.1rem;
+            margin-bottom: 1.2rem;
         }
 
         section {
@@ -228,7 +229,7 @@
         }
 
         footer {
-            margin-top: 5rem;
+            margin-top: 3rem;
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -246,18 +247,34 @@
                 <div class="header-text">
                     <h1>Lucas Rus Gallego</h1>
                     <div class="subtitle">Junior Software Engineer Backend</div>
-                    <p class="about-text">
-                        Soy Junior Software Engineer por la UPM con una auténtica obsesión por el rendimiento. Mi objetivo va más allá de escribir código funcional: busco comprender y optimizar la tecnología desde sus cimientos (hardware, red y memoria). Me especializo en entornos de altas prestaciones (HPC) y en construir sistemas eficientes que exprimen al máximo cada recurso.
-                    </p>
                 </div>
             </div>
         </header>
+
+        <section id="sobre-mi">
+            <h2>Sobre mí</h2>
+            <p class="about-text">
+                <strong>¿Quién soy?</strong><br>
+                Soy Lucas, un Junior Software Engineer especializado en Backend formado en la UPM. Me defino como un desarrollador polifacético, capaz de comprender y optimizar la tecnología desde sus cimientos físicos hasta la capa de software.
+            </p>
+            <p class="about-text">
+                <strong>Mi pasión</strong><br>
+                Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Disfruto trabajando en entornos de altas prestaciones (HPC) y eliminando cuellos de botella mediante técnicas de bajo nivel.
+            </p>
+            <p class="about-text">
+                <strong>El valor que aporto</strong><br>
+                Aporto una visión integral que abarca desde la paralelización de algoritmos y el desarrollo en Ensamblador, hasta el dimensionamiento físico de servidores. Mi enfoque garantiza que el software y la infraestructura funcionen con la máxima eficiencia.
+            </p>
+            <p class="about-text" style="margin-bottom: 0;">
+                <strong>Mi objetivo</strong><br>
+                Busco unirme a un equipo como Junior Software Engineer Backend donde pueda aplicar mi versatilidad y obsesión por el rendimiento. Propongo aportar valor inmediato diseñando soluciones robustas que optimicen los recursos del sistema al milímetro.
+            </p>
+        </section>
 
         <section id="trayectoria">
             <h2>Trayectoria Profesional</h2>
             <div class="btn-container">
                 <button id="btn-cv" class="btn btn-primary">Ver CV Tradicional</button>
-                <a href="https://linkedin.com" target="_blank" class="btn">Perfil de LinkedIn</a>
             </div>
 
             <div id="expanded-cv" class="pdf-viewer-container">
@@ -277,7 +294,7 @@
                     
                     <div id="expanded-cloud" class="expanded-section">
                         <div class="video-wrapper">
-                            <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/view?usp=drive_link" allow="autoplay" allowfullscreen></iframe>
+                            <iframe src="https://drive.google.com/file/d/13Y6PojDIrkjWHvVgB9cCCdRznRa2qFID/preview" allow="autoplay" allowfullscreen></iframe>
                         </div>
 
                         <div class="btn-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
@@ -319,13 +336,22 @@
             </div>
         </section>
 
+        <section id="contacto">
+            <h2>Contacta conmigo</h2>
+            <div class="btn-container">
+                <a href="mailto:lcsrusg@gmail.com" class="btn btn-primary">Enviar Email</a>
+                <a href="https://www.linkedin.com/in/lucas-rus-gallego/" target="_blank" class="btn">LinkedIn</a>
+                <a href="https://github.com/LcsRusG" target="_blank" class="btn">GitHub</a>
+            </div>
+        </section>
+
         <footer>
             <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
         </footer>
     </div>
 
     <script>
-        // --- Lógica para el CV Tradicional ---
+        // Lógica para el CV Tradicional
         const btnCv = document.getElementById('btn-cv');
         const viewerCv = document.getElementById('expanded-cv');
 
@@ -340,7 +366,7 @@
             }
         });
 
-        // --- Lógica para la Tarjeta 1 (Cloud) ---
+        // Lógica para la Tarjeta 1 (Cloud)
         const cloudCard = document.getElementById('cloud-card');
         const btnPrincipalCloud = document.getElementById('btn-principal-cloud');
         const expandedCloud = document.getElementById('expanded-cloud');
@@ -401,7 +427,7 @@
             }
         });
 
-        // --- Lógica para la Tarjeta 2 (Blog) ---
+        // Lógica para la Tarjeta 2 (Blog)
         const blogCard = document.getElementById('blog-card');
         const btnPrincipalBlog = document.getElementById('btn-principal-blog');
         const expandedBlog = document.getElementById('expanded-blog');
