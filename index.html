@@ -14,10 +14,10 @@
             --border-color: #e2e8f0;
             --folio-bg: #ffffff;
             
-            /* Nuevos colores para la cabecera oscura */
+            /* Colores para la cabecera oscura */
             --dark-band-bg: #2b2e35;
             --dark-text: #e2e8f0;
-            --gold-accent: #d4af37; /* Amarillo elegante de la referencia */
+            --gold-accent: #d4af37; 
         }
 
         * {
@@ -26,18 +26,18 @@
             padding: 0;
         }
 
-        /* FONDO DE LA WEB (Solucionado para archivo local) */
+        /* FONDO DE LA WEB */
         body {
             font-family: 'Aptos', Calibri, Arial, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
             
-            /* GUARDA TU IMAGEN DE FONDO COMO fondo.jpg EN LA MISMA CARPETA */
+            /* Recuerda guardar tu imagen como fondo.jpg */
             background-image: url('fondo.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #cbd5e1; /* Color por defecto si la imagen no carga */
+            background-color: #cbd5e1; 
             padding: 3rem 1rem;
         }
 
@@ -46,29 +46,28 @@
             max-width: 900px;
             margin: 0 auto;
             background-color: var(--folio-bg);
-            /* Padding inferior, pero 0 arriba para que el banner toque el borde */
             padding-bottom: 4rem;
             border-radius: 12px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-            overflow: hidden; /* Corta las esquinas del banner para mantener la redondez */
+            overflow: hidden; 
         }
 
         @media (max-width: 640px) {
             body { padding: 1rem; }
         }
 
-        /* --- NUEVA CABECERA (ESTILO REFERENCIA) --- */
+        /* --- CABECERA --- */
         .banner-area {
             position: relative;
             height: 350px;
-            /* GUARDA LA IMAGEN DE LA IA COMO banner_ia.jpg EN LA MISMA CARPETA */
+            /* Recuerda guardar tu imagen generada por IA como banner_ia.jpg */
             background-image: url('banner_ia.jpg');
             background-size: cover;
             background-position: center;
-            background-color: #1a1a1a; /* Por si falla la imagen */
+            background-color: #1a1a1a; 
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Texto a la derecha como en la foto */
+            justify-content: flex-end; 
             padding: 3rem;
         }
 
@@ -162,7 +161,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* --- RESTO DEL CONTENIDO (Con padding lateral ajustado) --- */
+        /* --- CONTENIDO DEL FOLIO --- */
         .content-padding {
             padding: 0 3rem;
             margin-top: 4rem;
@@ -184,6 +183,18 @@
             margin-bottom: 2rem;
             border-left: 4px solid var(--accent-color);
             padding-left: 0.75rem;
+        }
+
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 0.2rem;
         }
 
         /* MÉTRICAS DE IMPACTO */
@@ -410,7 +421,6 @@
         }
 
         footer {
-            margin-top: 3rem;
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -441,13 +451,33 @@
                 
                 <div class="dark-right">
                     <strong>Madrid | Junior Software Engineer</strong>
-                    <p>Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Busco aportar valor optimizando la tecnología desde sus cimientos de hardware hasta la capa de software, eliminando cuellos de botella mediante técnicas de bajo nivel.</p>
+                    <p>Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Busco aportar valor optimizando la tecnología desde sus cimientos de hardware hasta la capa de software.</p>
                 </div>
             </div>
         </header>
 
         <div class="content-padding">
             
+            <section id="sobre-mi">
+                <h2>Sobre mí</h2>
+                <p class="about-text">
+                    <strong>¿Quién soy?</strong>
+                    Soy Lucas, un Junior Software Engineer especializado en Backend formado en la UPM. Me defino como un desarrollador polifacético, capaz de comprender y optimizar la tecnología desde sus cimientos físicos hasta la capa de software.
+                </p>
+                <p class="about-text">
+                    <strong>Mi pasión</strong>
+                    Me apasiona enfrentarme a problemas complejos y exprimir al máximo el rendimiento de los sistemas. Disfruto trabajando en entornos de altas prestaciones (HPC) y eliminando cuellos de botella mediante técnicas de bajo nivel.
+                </p>
+                <p class="about-text">
+                    <strong>El valor que aporto</strong>
+                    Aporto una visión integral que abarca desde la paralelización de algoritmos y el desarrollo en Ensamblador, hasta el dimensionamiento físico de servidores. Mi enfoque garantiza que el software y la infraestructura funcionen con la máxima eficiencia.
+                </p>
+                <p class="about-text" style="margin-bottom: 0;">
+                    <strong>Mi objetivo</strong>
+                    Busco unirme a un equipo como Junior Software Engineer Backend donde pueda aplicar mi versatilidad y obsesión por el rendimiento. Propongo aportar valor inmediato diseñando soluciones robustas que optimicen los recursos del sistema al milímetro.
+                </p>
+            </section>
+
             <section id="impacto">
                 <h2>Métricas de Impacto Técnico</h2>
                 <div class="metrics-grid">
