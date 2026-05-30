@@ -87,17 +87,136 @@
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         h2 {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             border-left: 4px solid var(--accent-color);
             padding-left: 0.75rem;
         }
 
+        /* --- NUEVO: ESTILOS DE LA LÍNEA DE TIEMPO INFOGRÁFICA --- */
+        .timeline {
+            position: relative;
+            margin-left: 1rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.45rem;
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            background-color: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- NUEVO: ESTILOS DEL STACK TECNOLÓGICO INFOGRÁFICO --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: var(--text-color);
+            border-radius: 4px;
+        }
+
+        /* --- ESTILOS DE BOTONES Y TARJETAS --- */
         .btn-container {
             display: flex;
             gap: 1rem;
@@ -271,19 +390,109 @@
             </p>
         </section>
 
-        <section id="trayectoria">
-            <h2>Trayectoria Profesional</h2>
-            <div class="btn-container">
-                <button id="btn-cv" class="btn btn-primary">Ver CV Tradicional</button>
-            </div>
+        <section id="experiencia">
+            <h2>Trayectoria y Formación</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Sept 2025 - Presente</div>
+                    <div class="timeline-title">Desarrollador de Software Junior</div>
+                    <div class="timeline-subtitle">Mobility Tech España | Madrid</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Desarrollo de un módulo en C++/Python reduciendo en un 15% el tiempo de ejecución.</li>
+                            <li>Liderazgo en la transición a Docker bajo Scrum, incrementando despliegues seguros un 20%.</li>
+                            <li>Implementación de pruebas unitarias para módulos de alta concurrencia.</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Ene 2025 - Jun 2025</div>
+                    <div class="timeline-title">Analista Programador</div>
+                    <div class="timeline-subtitle">Universidad Politécnica de Madrid (UPM) | Proyecto Académico</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Desarrollo de un simulador basado en Dijkstra/A*, optimizando rutas un 12%.</li>
+                            <li>Coordinación de un equipo técnico de 4 personas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - 2025</div>
+                    <div class="timeline-title">Grado en Ingeniería Informática</div>
+                    <div class="timeline-subtitle">Universidad Politécnica de Madrid (UPM)</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li><strong>Nota media:</strong> 8.3/10 (Matrícula de Honor en Estructuras de Datos y Algoritmos).</li>
+                            <li><strong>TFG:</strong> "Optimización algorítmica para sistemas de señalización en tiempo real" (9.5/10).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Stack Tecnológico</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-group">
+                    <h3>Lenguajes Principales</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>C++</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Python</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Java</span> <span>Intermedio</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>SQL</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Herramientas y Metodologías</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Docker & CI/CD</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Git / Entornos Linux</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Agile (Scrum / Kanban)</span> <span>Avanzado</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Inglés (C1 Cambridge)</span> <span>Fluido</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="btn-container" style="margin-top: 2rem;">
+                <button id="btn-cv" class="btn">Ver CV Tradicional (PDF)</button>
+            </div>
             <div id="expanded-cv" class="pdf-viewer-container">
                 <iframe src="CV_Lucas_Rus_Gallego.pdf"></iframe>
             </div>
         </section>
 
         <section id="proyectos">
-            <h2>Proyectos Destacados</h2>
+            <h2>Portfolio de Evidencias</h2>
             <div class="grid">
                 
                 <div class="card" id="cloud-card">
@@ -339,9 +548,9 @@
         <section id="contacto">
             <h2>Contacta conmigo</h2>
             <div class="btn-container">
-                <a href="mailto:lcsrusg@gmail.com" class="btn btn-primary">Enviar Email</a>
-                <a href="https://www.linkedin.com/in/lucas-rus-gallego/" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/LcsRusG" target="_blank" class="btn">GitHub</a>
+                <a href="mailto:lucas.rus@email.com" class="btn btn-primary">Enviar Email</a>
+                <a href="https://linkedin.com/in/lucasrus" target="_blank" class="btn">LinkedIn</a>
+                <a href="https://github.com/lucasrus" target="_blank" class="btn">GitHub</a>
             </div>
         </section>
 
@@ -358,11 +567,11 @@
         btnCv.addEventListener('click', () => {
             viewerCv.classList.toggle('active');
             if (viewerCv.classList.contains('active')) {
-                btnCv.textContent = 'Ocultar CV Tradicional';
-                btnCv.classList.remove('btn-primary');
-            } else {
-                btnCv.textContent = 'Ver CV Tradicional';
+                btnCv.textContent = 'Ocultar CV Tradicional (PDF)';
                 btnCv.classList.add('btn-primary');
+            } else {
+                btnCv.textContent = 'Ver CV Tradicional (PDF)';
+                btnCv.classList.remove('btn-primary');
             }
         });
 
