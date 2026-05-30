@@ -87,7 +87,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
@@ -109,10 +109,12 @@
             color: #ffffff;
         }
 
+        /* Rejilla de proyectos */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
+            transition: all 0.4s ease;
         }
 
         @media (min-width: 640px) {
@@ -121,6 +123,7 @@
             }
         }
 
+        /* Estilos de las tarjetas */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -129,12 +132,19 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
         }
 
-        .card:hover {
+        .card:hover:not(.expanded) {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Estado expandido de la tarjeta */
+        .card.expanded {
+            grid-column: 1 / -1; /* Ocupa todo el ancho */
+            border-color: var(--accent-color);
         }
 
         .card-title {
@@ -147,7 +157,64 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
-            flex-grow: 1;
+        }
+
+        /* Contenedores ocultos inicialmente */
+        .video-container {
+            display: none;
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card.expanded .video-container {
+            display: block;
+            opacity: 1;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .script-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s ease;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            padding: 0;
+        }
+
+        .script-container.open {
+            max-height: 1000px; /* Permite que se despliegue suavemente */
+            margin-top: 1rem;
+            padding: 1.2rem;
+            border: 1px dashed var(--border-color);
+            overflow-y: auto;
+        }
+
+        .script-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .script-content {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            white-space: pre-line; /* Mantiene los saltos de línea */
         }
 
         footer {
@@ -182,24 +249,41 @@
         <section id="proyectos">
             <h2>Proyectos Destacados</h2>
             <div class="grid">
-                <div class="card">
+                
+                <div class="card" id="cloud-card">
                     <div>
                         <div class="card-title">Optimización de Infraestructura Cloud</div>
-                        <div class="card-description">Caso de estudio y propuesta ejecutiva sobre la implementación de agentes autónomos de IA para la contención de costes en microservicios cloud.</div>
+                        <div class="card-description">Presentación ejecutiva enfocada en el uso de agentes autónomos de Inteligencia Artificial para la contención de costes y optimización de latencias en entornos de microservicios.</div>
                     </div>
+                    
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/e/XYZ_TU_ID_DE_VIDEO/preview" allow="autoplay"></iframe>
+                    </div>
+
+                    <div class="script-container" id="script-accordion">
+                        <div class="script-title">Guión y Estructura de la Defensa:</div>
+                        <div class="script-content">
+                            Introducción: Presentación del problema de sobre-aprovisionamiento...
+                            Bloque 1: Análisis técnico del framework IntelliStore...
+                            Bloque 2: Resultados empíricos del paper (28% velocidad, 34% ahorro)...
+                            Conclusión: Turno de preguntas y cierre reflexivo.
+                        </div>
+                    </div>
+
                     <div class="btn-container" style="margin-top: 1rem; gap: 0.5rem;">
-                        <a href="https://youtube.com" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Ver Vídeo de la Presentación</a>
-                        <a href="Diapositivas_IntelliStore.pdf" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Ver Diapositivas (PDF)</a>
-                        <a href="Documentacion_Presentacion.pdf" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: var(--text-muted);">Ver Guión y Justificación</a>
+                        <button class="btn btn-primary" id="trigger-expand">Ver Presentación</button>
+                        <button class="btn" id="trigger-script" style="display: none;">Ver Guión</button>
                     </div>
                 </div>
-                <div class="card">
+
+                <div class="card" id="blog-card">
                     <div>
                         <div class="card-title">Divulgación Tecnológica: IntelliStore</div>
                         <div class="card-description">Artículo de blog detallado que traduce conceptos complejos de bases de datos a un lenguaje claro, explicando el impacto real de la automatización de la arquitectura.</div>
                     </div>
-                    <a href="Blog_Divulgativo.pdf" target="_blank" class="btn">Leer Artículo</a>
+                    <a href="Blog_Divulgativo.pdf" target="_blank" class="btn" style="align-self: flex-start;">Leer Artículo</a>
                 </div>
+
             </div>
         </section>
 
@@ -207,6 +291,38 @@
             <p>&copy; 2026 Lucas Rus Gallego. Proyecto Final de Currículum Web - EPA (UPM).</p>
         </footer>
     </div>
+
+    <script>
+        const cloudCard = document.getElementById('cloud-card');
+        const btnExpand = document.getElementById('trigger-expand');
+        const btnScript = document.getElementById('trigger-script');
+        const scriptAccordion = document.getElementById('script-accordion');
+
+        btnExpand.addEventListener('click', () => {
+            // Alternar estado expandido de la tarjeta principal
+            cloudCard.classList.toggle('expanded');
+            
+            if (cloudCard.classList.contains('expanded')) {
+                btnExpand.textContent = 'Cerrar Presentación';
+                btnScript.style.display = 'inline-flex'; // Mostrar botón de guión
+            } else {
+                btnExpand.textContent = 'Ver Presentación';
+                btnScript.style.display = 'none'; // Ocultar botón de guión
+                scriptAccordion.classList.remove('open'); // Cerrar guión por seguridad
+                btnScript.textContent = 'Ver Guión';
+            }
+        });
+
+        btnScript.addEventListener('click', () => {
+            // Alternar la clase del acordeón del guión
+            scriptAccordion.classList.toggle('open');
+            if (scriptAccordion.classList.contains('open')) {
+                btnScript.textContent = 'Ocultar Guión';
+            } else {
+                btnScript.textContent = 'Ver Guión';
+            }
+        });
+    </script>
 
 </body>
 </html>
